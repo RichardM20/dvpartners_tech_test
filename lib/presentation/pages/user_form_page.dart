@@ -10,6 +10,7 @@ import '../widgets/address/addresses_form_section.dart';
 import '../widgets/buttons/button.dart';
 import '../widgets/inputs/date_input.dart';
 import '../widgets/inputs/text_input.dart';
+import '../widgets/snackbar/snackbar_app.dart';
 
 class UserFormPage extends StatefulWidget {
   final User? user;
@@ -45,9 +46,7 @@ class _UserFormPageState extends State<UserFormPage> {
             body: BlocListener<UserCubit, UserState>(
               listener: (context, state) {
                 if (state is UserError) {
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(state.message)));
+                  SnackBarApp.show(context, state.message, isError: true);
                 } else if (state is UserLoaded) {
                   Navigator.of(context).pop();
                 }
@@ -220,9 +219,7 @@ class _UserFormPageState extends State<UserFormPage> {
   }
 
   void _showError(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(message), backgroundColor: Colors.red),
-    );
+    SnackBarApp.show(context, message, isError: true);
   }
 
   void _updateAddress(int index, Address address) {

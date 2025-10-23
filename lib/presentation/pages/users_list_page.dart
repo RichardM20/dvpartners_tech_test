@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/entities/user.dart';
 import '../cubit/user_cubit.dart';
+import '../widgets/snackbar/snackbar_app.dart';
 import '../widgets/user_card/dropdown_user_action.dart';
 import '../widgets/user_card/empty_state.dart';
 import 'user_detail_page.dart';
@@ -76,12 +77,7 @@ class UsersListView extends StatelessWidget {
     return BlocListener<UserCubit, UserState>(
       listener: (context, state) {
         if (state is UserError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Error: ${state.message}'),
-              backgroundColor: Colors.red,
-            ),
-          );
+          SnackBarApp.show(context, 'Error: ${state.message}', isError: true);
         }
       },
       child: BlocBuilder<UserCubit, UserState>(

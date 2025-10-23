@@ -5,6 +5,7 @@ import '../../domain/entities/user.dart';
 import '../cubit/user_cubit.dart';
 import '../widgets/buttons/button.dart';
 import '../widgets/address/user_addresses_section.dart';
+import '../widgets/snackbar/snackbar_app.dart';
 import '../widgets/user_info_widget.dart';
 import 'user_form_page.dart';
 
@@ -120,22 +121,16 @@ class _UserDetailPageState extends State<UserDetailPage> {
 
   void _handleStateChanges(BuildContext context, UserState state) {
     if (state is UserError) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Error: ${state.message}'),
-          backgroundColor: Colors.red,
-        ),
-      );
+      SnackBarApp.show(context, 'Error: ${state.message}', isError: true);
     } else if (state is UserLoaded) {
       final userStillExists = state.users.any(
         (user) => user.id == widget.user.id,
       );
       if (!userStillExists) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Usuario eliminado exitosamente'),
-            backgroundColor: Colors.green,
-          ),
+        SnackBarApp.show(
+          context,
+          'Usuario eliminado exitosamente',
+          isError: false,
         );
         Navigator.of(context).pop();
       }
