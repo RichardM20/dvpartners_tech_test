@@ -1,0 +1,200 @@
+{
+  "countries": [
+    {
+      "departments": [
+        {
+          "cities": ["Bogotá", "Soacha", "Chía", "Zipaquirá", "Cajicá"],
+          "name": "Bogotá D.C."
+        },
+        {
+          "cities": ["Medellín", "Bello", "Itagüí", "Envigado", "Apartadó"],
+          "name": "Antioquia"
+        },
+        {
+          "cities": ["Cali", "Palmira", "Buenaventura", "Tuluá", "Cartago"],
+          "name": "Valle del Cauca"
+        },
+        {
+          "cities": [
+            "Bucaramanga",
+            "Floridablanca",
+            "Girón",
+            "Piedecuesta",
+            "Barrancabermeja"
+          ],
+          "name": "Santander"
+        },
+        {
+          "cities": [
+            "Barranquilla",
+            "Soledad",
+            "Malambo",
+            "Puerto Colombia",
+            "Galapa"
+          ],
+          "name": "Atlántico"
+        }
+      ],
+      "name": "Colombia"
+    },
+    {
+      "departments": [
+        {
+          "cities": [
+            "Álvaro Obregón",
+            "Coyoacán",
+            "Iztapalapa",
+            "Benito Juárez",
+            "Miguel Hidalgo"
+          ],
+          "name": "Ciudad de México"
+        },
+        {
+          "cities": [
+            "Guadalajara",
+            "Zapopan",
+            "Tlaquepaque",
+            "Tonalá",
+            "San Pedro Tlaquepaque"
+          ],
+          "name": "Jalisco"
+        },
+        {
+          "cities": [
+            "Monterrey",
+            "Guadalupe",
+            "San Nicolás de los Garza",
+            "Apodaca",
+            "Escobedo"
+          ],
+          "name": "Nuevo León"
+        },
+        {
+          "cities": [
+            "Puebla",
+            "San Pedro Cholula",
+            "San Andrés Cholula",
+            "Tehuacán",
+            "Atlixco"
+          ],
+          "name": "Puebla"
+        },
+        {
+          "cities": [
+            "Veracruz",
+            "Xalapa",
+            "Coatzacoalcos",
+            "Córdoba",
+            "Poza Rica"
+          ],
+          "name": "Veracruz"
+        }
+      ],
+      "name": "México"
+    },
+    {
+      "departments": [
+        {
+          "cities": [
+            "La Plata",
+            "Mar del Plata",
+            "Quilmes",
+            "Lomas de Zamora",
+            "Lanús"
+          ],
+          "name": "Buenos Aires"
+        },
+        {
+          "cities": [
+            "Córdoba",
+            "Villa María",
+            "Río Cuarto",
+            "San Francisco",
+            "Villa Carlos Paz"
+          ],
+          "name": "Córdoba"
+        },
+        {
+          "cities": [
+            "Santa Fe",
+            "Rosario",
+            "Venado Tuerto",
+            "Rafaela",
+            "Reconquista"
+          ],
+          "name": "Santa Fe"
+        },
+        {
+          "cities": [
+            "Mendoza",
+            "San Rafael",
+            "Godoy Cruz",
+            "Las Heras",
+            "Maipú"
+          ],
+          "name": "Mendoza"
+        },
+        {
+          "cities": [
+            "San Miguel de Tucumán",
+            "Yerba Buena",
+            "Tafí Viejo",
+            "Concepción",
+            "Banda del Río Salí"
+          ],
+          "name": "Tucumán"
+        }
+      ],
+      "name": "Argentina"
+    },
+    {
+      "departments": [
+        {
+          "cities": [
+            "Los Angeles",
+            "San Francisco",
+            "San Diego",
+            "Sacramento",
+            "San José"
+          ],
+          "name": "California"
+        },
+        {
+          "cities": [
+            "Houston",
+            "Dallas",
+            "Austin",
+            "San Antonio",
+            "Fort Worth"
+          ],
+          "name": "Texas"
+        },
+        {
+          "cities": [
+            "Miami",
+            "Tampa",
+            "Orlando",
+            "Jacksonville",
+            "Tallahassee"
+          ],
+          "name": "Florida"
+        },
+        {
+          "cities": [
+            "Nueva York",
+            "Buffalo",
+            "Rochester",
+            "Syracuse",
+            "Albany"
+          ],
+          "name": "Nueva York"
+        },
+        {
+          "cities": ["Chicago", "Aurora", "Rockford", "Joliet", "Naperville"],
+          "name": "Illinois"
+        }
+      ],
+      "name": "Estados Unidos"
+    }
+  ]
+}
