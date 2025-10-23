@@ -17,7 +17,6 @@ Esta aplicación demuestra el manejo de usuarios con sus direcciones, implementa
 ## Patrones de Diseño Implementados (Solo lo necesario)
 
 - **Factory Pattern**: `AnimationContainer.fromRight()`, `Button.icon()`, `Button.loading()`
-- **Singleton Pattern**: `UserSessionService`
 
 ## Arquitectura
 

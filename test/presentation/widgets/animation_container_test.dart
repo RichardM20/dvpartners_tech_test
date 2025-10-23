@@ -80,8 +80,8 @@ void main() {
         MaterialApp(
           home: Scaffold(
             body: AnimationContainer(
-              child: testWidget,
               duration: customDuration,
+              child: testWidget,
             ),
           ),
         ),
@@ -98,7 +98,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: AnimationContainer(child: testWidget, delay: customDelay),
+            body: AnimationContainer(delay: customDelay, child: testWidget),
           ),
         ),
       );
@@ -115,8 +115,8 @@ void main() {
         MaterialApp(
           home: Scaffold(
             body: AnimationContainer.fromBottom(
-              child: testWidget,
               delay: customDelay,
+              child: testWidget,
             ),
           ),
         ),

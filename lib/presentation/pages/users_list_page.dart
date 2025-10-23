@@ -6,7 +6,7 @@ import '../../domain/entities/user.dart';
 import '../cubit/user_cubit.dart';
 import '../widgets/snackbar/snackbar_app.dart';
 import '../widgets/user_card/dropdown_user_action.dart';
-import '../widgets/user_card/empty_state.dart';
+import '../widgets/empty_state.dart';
 import 'user_detail_page.dart';
 import 'user_form_page.dart';
 
