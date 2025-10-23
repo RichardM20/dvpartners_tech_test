@@ -20,6 +20,14 @@ class DatabaseService {
     await db.close();
   }
 
+  static Future<void> deleteAllUsers() async {
+    final db = await database;
+    await db.transaction((txn) async {
+      await txn.delete(_addressesTable);
+      await txn.delete(_usersTable);
+    });
+  }
+
   static Future<void> _createTables(Database db, int version) async {
     await db.execute('''
       CREATE TABLE $_usersTable (

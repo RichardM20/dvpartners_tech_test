@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/entities/user.dart';
 import '../cubit/user_cubit.dart';
 import '../widgets/buttons/button.dart';
-import '../widgets/user_addresses_section_widget.dart';
+import '../widgets/address/user_addresses_section.dart';
 import '../widgets/user_info_widget.dart';
 import 'user_form_page.dart';
 
@@ -38,15 +38,23 @@ class _UserDetailPageState extends State<UserDetailPage> {
                 absorbing: isLoading,
                 child: Opacity(
                   opacity: isLoading ? 0.6 : 1.0,
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
+                  child: SafeArea(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        UserInfoWidget(user: widget.user),
-                        const SizedBox(height: 24),
-                        UserAddressesSectionWidget(user: widget.user),
-                        const SizedBox(height: 32),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            padding: const EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                UserInfoWidget(user: widget.user),
+                                const SizedBox(height: 24),
+                                UserAddressesSectionWidget(user: widget.user),
+                                const SizedBox(height: 32),
+                              ],
+                            ),
+                          ),
+                        ),
                         _buildActionButtons(context),
                       ],
                     ),
@@ -61,22 +69,25 @@ class _UserDetailPageState extends State<UserDetailPage> {
   }
 
   Widget _buildActionButtons(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Button.loading(
-            initialText: 'Editar',
-            primaryText: 'Editando...',
-            isLoading: false,
-            backgroundColor: Theme.of(
-              context,
-            ).colorScheme.primary.withValues(alpha: 0.5),
-            onTap: () => _editUser(context),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        children: [
+          Expanded(
+            child: Button.loading(
+              initialText: 'Editar',
+              primaryText: 'Editando',
+              isLoading: false,
+              backgroundColor: Theme.of(
+                context,
+              ).colorScheme.primary.withValues(alpha: 0.5),
+              onTap: () => _editUser(context),
+            ),
           ),
-        ),
-        const SizedBox(width: 16),
-        Expanded(child: _buildDeleteButton(context)),
-      ],
+          const SizedBox(width: 16),
+          Expanded(child: _buildDeleteButton(context)),
+        ],
+      ),
     );
   }
 
@@ -88,7 +99,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
         return Button.loading(
           backgroundColor: Colors.red.withValues(alpha: 0.5),
           initialText: 'Eliminar',
-          primaryText: 'Eliminando...',
+          primaryText: 'Eliminando',
           isLoading: isDeleting,
           onTap: isDeleting ? null : () => _deleteUser(context),
         );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/user.dart';
-import 'helpers/user_helpers.dart';
+import '../../../domain/entities/user.dart';
+import '../../helpers/user_helpers.dart';
 
 class UserCard extends StatelessWidget {
   final User user;

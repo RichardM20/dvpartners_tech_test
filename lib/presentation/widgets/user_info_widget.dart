@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../domain/entities/user.dart';
-import 'helpers/user_helpers.dart';
+import '../helpers/user_helpers.dart';
 
 class UserInfoWidget extends StatelessWidget {
   final User user;
@@ -59,12 +59,9 @@ class UserInfoWidget extends StatelessWidget {
 
   Widget _buildCardContent(BuildContext context) {
     return Column(
+      spacing: 16,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildUserHeader(context),
-        const SizedBox(height: 20),
-        _buildUserInfoSection(),
-      ],
+      children: [_buildUserHeader(context), _buildUserInfoSection()],
     );
   }
 
@@ -115,11 +112,8 @@ class UserInfoWidget extends StatelessWidget {
 
   Widget _buildUserHeader(BuildContext context) {
     return Row(
-      children: [
-        _buildUserAvatar(context),
-        const SizedBox(width: 16),
-        _buildUserDetails(),
-      ],
+      spacing: 16,
+      children: [_buildUserAvatar(context), _buildUserDetails()],
     );
   }
 
@@ -132,19 +126,20 @@ class UserInfoWidget extends StatelessWidget {
 
   Widget _buildUserInfoSection() {
     return Column(
+      spacing: 12,
       children: [
         _buildInfoRow(
           icon: Icons.cake_outlined,
           label: 'Fecha de Nacimiento',
           value: UserHelpers.formatBirthDate(user.birthDate),
         ),
-        const SizedBox(height: 12),
+
         _buildInfoRow(
           icon: Icons.calendar_today_outlined,
           label: 'Edad',
           value: '${UserHelpers.calculateAge(user.birthDate)} años',
         ),
-        const SizedBox(height: 12),
+
         _buildInfoRow(
           icon: Icons.location_on_outlined,
           label: 'Direcciones',

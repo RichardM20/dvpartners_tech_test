@@ -5,6 +5,7 @@ import '../../data/repositories/user_repository_impl.dart';
 import '../../domain/repositories/location_repository.dart';
 import '../../domain/repositories/user_repository.dart';
 import '../../domain/usecases/create_user_usecase.dart';
+import '../../domain/usecases/delete_all_users_usecase.dart';
 import '../../domain/usecases/delete_user_usecase.dart';
 import '../../domain/usecases/get_locations_usecase.dart';
 import '../../domain/usecases/get_users_usecase.dart';
@@ -22,6 +23,7 @@ Future<void> initializeDependencies() async {
   sl.registerLazySingleton(() => CreateUserUseCase(sl()));
   sl.registerLazySingleton(() => UpdateUserUseCase(sl()));
   sl.registerLazySingleton(() => DeleteUserUseCase(sl()));
+  sl.registerLazySingleton(() => DeleteAllUsersUseCase(sl()));
 
   sl.registerFactory(
     () => UserCubit(
@@ -29,6 +31,7 @@ Future<void> initializeDependencies() async {
       createUserUseCase: sl(),
       updateUserUseCase: sl(),
       deleteUserUseCase: sl(),
+      deleteAllUsersUseCase: sl(),
     ),
   );
 }

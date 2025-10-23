@@ -1,3 +1,4 @@
+import 'package:dvpartners_tech_test/presentation/widgets/animation_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,7 +6,7 @@ import '../../core/injection/injection_container.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/usecases/get_locations_usecase.dart';
 import '../cubit/user_cubit.dart';
-import '../widgets/addresses_form_section_widget.dart';
+import '../widgets/address/addresses_form_section.dart';
 import '../widgets/buttons/button.dart';
 import '../widgets/inputs/date_input.dart';
 import '../widgets/inputs/text_input.dart';
@@ -63,16 +64,23 @@ class _UserFormPageState extends State<UserFormPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           _buildNameFields(isLoading),
-                          _buildBirthDateField(isLoading),
-                          AddressesFormSectionWidget(
-                            addresses: _addresses,
-                            onAddressChanged: _updateAddress,
-                            onAddressRemoved: _removeAddress,
-                            onAddAddress: _addAddress,
-                            isDisabled: isLoading,
+
+                          AnimationContainer.fromLeft(
+                            child: _buildBirthDateField(isLoading),
+                          ),
+                          AnimationContainer.fromRight(
+                            child: AddressesFormSectionWidget(
+                              addresses: _addresses,
+                              onAddressChanged: _updateAddress,
+                              onAddressRemoved: _removeAddress,
+                              onAddAddress: _addAddress,
+                              isDisabled: isLoading,
+                            ),
                           ),
                           const SizedBox(height: 32),
-                          _buildSaveButton(isEditing, isLoading),
+                          AnimationContainer.fromBottom(
+                            child: _buildSaveButton(isEditing, isLoading),
+                          ),
                         ],
                       ),
                     ),
@@ -140,24 +148,28 @@ class _UserFormPageState extends State<UserFormPage> {
   Widget _buildNameFields(bool isLoading) {
     return Column(
       children: [
-        TextInputApp(
-          label: 'Nombre',
-          value: _firstNameController.text,
-          onChanged: isLoading
-              ? null
-              : (value) {
-                  _firstNameController.text = value;
-                },
+        AnimationContainer.fromTop(
+          child: TextInputApp(
+            label: 'Nombre',
+            value: _firstNameController.text,
+            onChanged: isLoading
+                ? null
+                : (value) {
+                    _firstNameController.text = value;
+                  },
+          ),
         ),
         const SizedBox(height: 16),
-        TextInputApp(
-          label: 'Apellido',
-          value: _lastNameController.text,
-          onChanged: isLoading
-              ? null
-              : (value) {
-                  _lastNameController.text = value;
-                },
+        AnimationContainer.fromRight(
+          child: TextInputApp(
+            label: 'Apellido',
+            value: _lastNameController.text,
+            onChanged: isLoading
+                ? null
+                : (value) {
+                    _lastNameController.text = value;
+                  },
+          ),
         ),
       ],
     );

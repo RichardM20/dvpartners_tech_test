@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/user.dart';
+import '../../../domain/entities/user.dart';
 
 class AddressCardWidget extends StatelessWidget {
   final int number;
@@ -34,6 +34,7 @@ class AddressCardWidget extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
+        spacing: 8,
         children: [
           SizedBox(
             width: 100,

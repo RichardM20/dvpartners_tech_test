@@ -7,6 +7,7 @@ import '../models/country_model.dart';
 
 class LocationRepositoryImpl implements LocationRepository {
   List<CountryModel> _countries = [];
+  static const _jsonPath = 'assets/data/location_data.json';
 
   @override
   List<String> getCities(String countryName, String departmentName) {
@@ -39,9 +40,7 @@ class LocationRepositoryImpl implements LocationRepository {
 
   @override
   Future<void> loadLocations() async {
-    final String jsonString = await rootBundle.loadString(
-      'assets/data/location_data.json',
-    );
+    final String jsonString = await rootBundle.loadString(_jsonPath);
     final Map<String, dynamic> jsonData = json.decode(jsonString);
 
     _countries = (jsonData['countries'] as List)

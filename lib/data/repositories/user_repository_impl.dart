@@ -46,6 +46,17 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
+  Future<void> deleteAllUsers() async {
+    await Future.delayed(const Duration(seconds: 1));
+
+    try {
+      await DatabaseService.deleteAllUsers();
+    } catch (e) {
+      throw Exception('Error al eliminar todos los usuarios: $e');
+    }
+  }
+
+  @override
   Future<User> getUserById(int id) async {
     await Future.delayed(const Duration(seconds: 1));
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../core/injection/injection_container.dart';
-import '../../domain/entities/user.dart';
-import '../../domain/usecases/get_locations_usecase.dart';
-import 'inputs/suggestions/suggestions_input.dart';
+import '../../../core/injection/injection_container.dart';
+import '../../../domain/entities/user.dart';
+import '../../../domain/usecases/get_locations_usecase.dart';
+import '../inputs/suggestions/suggestions_input.dart';
 
 class AddressFormWidget extends StatelessWidget {
   final int index;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/user.dart';
-import 'address_form_widget.dart';
-import 'buttons/button.dart';
+import '../../../domain/entities/user.dart';
+import 'address_form.dart';
+import '../buttons/button.dart';
 
 class AddressesFormSectionWidget extends StatelessWidget {
   final List<Address> addresses;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/entities/user.dart';
-import 'address_card_widget.dart';
+import '../../../domain/entities/user.dart';
+import 'address_card.dart';
 
 class UserAddressesSectionWidget extends StatelessWidget {
   final User user;
@@ -26,9 +26,10 @@ class UserAddressesSectionWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
+            spacing: 12,
             children: [
               Icon(Icons.location_off, size: 48, color: Colors.grey[400]),
-              const SizedBox(height: 12),
+
               Text(
                 'No hay direcciones registradas',
                 style: TextStyle(color: Colors.grey[600], fontSize: 16),
@@ -41,12 +42,13 @@ class UserAddressesSectionWidget extends StatelessWidget {
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 12,
       children: [
         const Text(
           'Direcciones',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 12),
+
         ...user.addresses.asMap().entries.map((entry) {
           final index = entry.key;
           final address = entry.value;
