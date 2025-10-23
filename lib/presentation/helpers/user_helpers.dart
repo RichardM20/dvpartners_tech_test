@@ -20,7 +20,11 @@ class UserHelpers {
   }
 
   static String getInitials(String fullName) {
-    final words = fullName.trim().split(' ');
+    final words = fullName
+        .trim()
+        .split(' ')
+        .where((word) => word.isNotEmpty)
+        .toList();
     if (words.isEmpty) return 'U';
 
     if (words.length == 1) {
