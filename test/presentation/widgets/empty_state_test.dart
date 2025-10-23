@@ -1,7 +1,6 @@
+import 'package:dvpartners_tech_test/presentation/widgets/empty_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:dvpartners_tech_test/presentation/widgets/user_card/empty_state.dart';
 
 void main() {
   group('EmptyState', () {
