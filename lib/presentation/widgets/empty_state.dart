@@ -40,10 +40,23 @@ class _EmptyStateBase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Center(
-        child: CircularProgressIndicator.adaptive(strokeWidth: 0.5),
-      );
+      return _buildLoadingState();
     }
+    return _buildEmptyState(context);
+  }
+
+  Widget _buildEmptyIcon() {
+    return Icon(icon, color: color);
+  }
+
+  Widget _buildEmptyMessage(BuildContext context) {
+    return Text(
+      message,
+      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: color),
+    );
+  }
+
+  Widget _buildEmptyState(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: double.infinity,
@@ -51,16 +64,14 @@ class _EmptyStateBase extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         spacing: 10,
-        children: [
-          Icon(icon, color: color),
-          Text(
-            message,
-            style: Theme.of(
-              context,
-            ).textTheme.bodySmall?.copyWith(color: color),
-          ),
-        ],
+        children: [_buildEmptyIcon(), _buildEmptyMessage(context)],
       ),
+    );
+  }
+
+  Widget _buildLoadingState() {
+    return const Center(
+      child: CircularProgressIndicator.adaptive(strokeWidth: 0.5),
     );
   }
 }

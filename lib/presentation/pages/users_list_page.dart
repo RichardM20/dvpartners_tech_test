@@ -22,7 +22,6 @@ class UsersListPage extends StatelessWidget {
       body: const UsersListView(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.6),
-
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         onPressed: () => _navigateToCreateUser(context),
         child: const Icon(Icons.add, color: Colors.white),

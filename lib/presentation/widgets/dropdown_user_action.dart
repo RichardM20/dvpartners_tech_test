@@ -35,15 +35,7 @@ class _UserCardWithActionsState extends State<UserCardWithActions>
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: widget.onTap,
-      child: Stack(
-        children: [
-          UserCard(user: widget.user),
-          Positioned(right: 24, top: 24, child: _buildDropdownMenu()),
-        ],
-      ),
-    );
+    return _buildCardWithActions(context);
   }
 
   @override
@@ -87,16 +79,36 @@ class _UserCardWithActionsState extends State<UserCardWithActions>
     );
   }
 
+  Widget _buildCardWithActions(BuildContext context) {
+    return GestureDetector(
+      onTap: widget.onTap,
+      child: Stack(
+        children: [
+          UserCard(user: widget.user),
+          _buildDropdownButton(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDropdownButton() {
+    return Positioned(right: 24, top: 24, child: _buildDropdownMenu());
+  }
+
+  Widget _buildDropdownContainer() {
+    return Container(
+      width: _dropdownWidth,
+      decoration: _buildDropdownDecoration(),
+      child: _buildDropdownItems(),
+    );
+  }
+
   Widget _buildDropdownContent() {
     return Material(
       color: Colors.transparent,
       child: ScaleTransition(
         scale: _scaleAnimation,
-        child: Container(
-          width: _dropdownWidth,
-          decoration: _buildDropdownDecoration(),
-          child: _buildDropdownItems(),
-        ),
+        child: _buildDropdownContainer(),
       ),
     );
   }
@@ -159,18 +171,30 @@ class _UserCardWithActionsState extends State<UserCardWithActions>
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          child: Row(
-            children: [
-              Icon(icon, color: color, size: 20),
-              const SizedBox(width: 12),
-              Text(label, style: _getMenuItemTextStyle()),
-            ],
-          ),
-        ),
+        child: _buildMenuItemContent(icon, label, color),
       ),
     );
+  }
+
+  Widget _buildMenuItemContent(IconData icon, String label, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      child: Row(
+        children: [
+          _buildMenuItemIcon(icon, color),
+          const SizedBox(width: 12),
+          _buildMenuItemText(label),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMenuItemIcon(IconData icon, Color color) {
+    return Icon(icon, color: color, size: 20);
+  }
+
+  Widget _buildMenuItemText(String label) {
+    return Text(label, style: _getMenuItemTextStyle());
   }
 
   Offset? _calculateDropdownPosition() {

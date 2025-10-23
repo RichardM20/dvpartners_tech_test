@@ -14,55 +14,19 @@ class AddressCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _buildCardContainer(child: _buildCardContent(context));
+  }
+
+  Widget _buildAddressBadge(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Theme.of(
-                      context,
-                    ).primaryColor.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    'Dirección $number',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 12),
-            _buildAddressInfoRow('País', address.country),
-            _buildAddressInfoRow('Departamento', address.department),
-            _buildAddressInfoRow('Municipio', address.municipality),
-          ],
-        ),
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: _buildBadgeDecoration(context),
+      child: _buildBadgeText(context),
     );
+  }
+
+  Widget _buildAddressHeader(BuildContext context) {
+    return Row(children: [_buildAddressBadge(context)]);
   }
 
   Widget _buildAddressInfoRow(String label, String value) {
@@ -90,6 +54,62 @@ class AddressCardWidget extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildAddressInfoSection() {
+    return Column(
+      children: [
+        _buildAddressInfoRow('País', address.country),
+        _buildAddressInfoRow('Departamento', address.department),
+        _buildAddressInfoRow('Municipio', address.municipality),
+      ],
+    );
+  }
+
+  BoxDecoration _buildBadgeDecoration(BuildContext context) {
+    return BoxDecoration(
+      color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
+      borderRadius: BorderRadius.circular(12),
+    );
+  }
+
+  Widget _buildBadgeText(BuildContext context) {
+    return Text(
+      'Dirección $number',
+      style: TextStyle(
+        color: Theme.of(context).primaryColor,
+        fontWeight: FontWeight.bold,
+        fontSize: 12,
+      ),
+    );
+  }
+
+  Widget _buildCardContainer({required Widget child}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.1),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Padding(padding: const EdgeInsets.all(16), child: child),
+    );
+  }
+
+  Widget _buildCardContent(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildAddressHeader(context),
+        const SizedBox(height: 12),
+        _buildAddressInfoSection(),
+      ],
     );
   }
 }
